@@ -438,6 +438,12 @@ With Application
     Dim ans2 As String
 
 atak:
+If Range("d33") = 3 Or Range("d32") = 3 Then
+    GoTo ooooooooooooo
+ElseIf Range("d33") <> 3 Or Range("d32") <> 3 Then
+
+End If
+
     Range("a1") = InputBox("Wybierz 1 jak chcesz zrobić atak w górę, 2 jeśli w środek, 3 jeśli w dół")
     If Range("a1") = "" Then
     GoTo ooooooooooooo
@@ -464,6 +470,10 @@ ElseIf Range("aa1").Value = 2 Then
 MsgBox ("Ruch przeciwnika")
 
 atak_przeciwnik:
+
+If Range("d33") = 3 Or Range("d32") = 3 Then
+GoTo ooooooooooooo
+End If
 
 Range("b1") = "=1+(4-1)*RAND()"
    Range("d1").Select
@@ -502,29 +512,37 @@ zzzzzzzzzzzz:
 If Range("aa1").Value = 1 Then
     Range("aa1").Value = 2
         If Range("d33").Value = 3 Then
-        MsgBox ("Wygrana. Statki przeciwnika zatopione")
+        MsgBox ("Wygrana")
         GoTo ooooooooooooo
         End If
         If Range("d32").Value = 3 Then
-        MsgBox ("Przegrana. Przeciwnik zatopił twoje statki")
+        MsgBox ("Przegrana")
         GoTo ooooooooooooo
         End If
     GoTo wwwwwwwww
     ElseIf Range("aa1").Value = 2 Then
     Range("aa1").Value = 1
         If Range("d33").Value = 3 Then
-        MsgBox ("Wygrana. Statki przeciwnika zatopione")
+        MsgBox ("Wygrana")
         GoTo ooooooooooooo
         End If
         If Range("d32").Value = 3 Then
-        MsgBox ("Przegrana. Przeciwnik zatopił twoje statki")
+        MsgBox ("Przegrana")
         GoTo ooooooooooooo
         End If
     GoTo wwwwwwwww
     End If
 
 ooooooooooooo:
+
+If Range("d33").Value = 3 Then
 MsgBox ("Koniec gry")
+wygrana_1
+ElseIf Range("d32").Value = 3 Then
+MsgBox ("Koniec gry")
+wygrana_2
+End If
+
 End Sub
 
 Sub obrona_przeciwnik()
@@ -680,33 +698,54 @@ If Range("aa1") = 1 Then
     i = i + 1
  End If
 qqqqqqqqqqqqq:
-If Range("aa1").Value = 1 Then
+If Range("d33") Or Range("d32") <> 3 Then
+    If Range("aa1").Value = 1 Then
     Range("aa1").Value = 2
-        If Range("d33").Value = 3 Then
-        MsgBox ("Wygrana. Pokonałeś przeciwnika")
-        GoTo ooooooooooooo
-        End If
-        If Range("d32").Value = 3 Then
-        MsgBox ("Przegrana. Przeciwnik wygrał")
-        GoTo ooooooooooooo
-        End If
+'        If Range("d33").Value = 3 Then
+'        MsgBox ("Wygrana. Pokonałeś przeciwnika")
+'        wygrana_1
+'        GoTo ooooooooooooo
+'        End If
+'        If Range("d32").Value = 3 Then
+'        MsgBox ("Przegrana. Przeciwnik wygrał")
+'        wygrana_2
+'        GoTo ooooooooooooo
+'        End If
+        
     Gra_walka
+    
     ElseIf Range("aa1").Value = 2 Then
     Range("aa1").Value = 1
-        If Range("d33").Value = 3 Then
-        MsgBox ("Wygrana. Pokonałeś przeciwnika")
-        GoTo ooooooooooooo
-        End If
-        If Range("d32").Value = 3 Then
-        MsgBox ("Przegrana. Przeciwnik wygrał")
-        GoTo ooooooooooooo
-        End If
+'        If Range("d33").Value = 3 Then
+'        MsgBox ("Wygrana. Pokonałeś przeciwnika")
+'        wygrana_1
+'        GoTo ooooooooooooo
+'        End If
+'        If Range("d32").Value = 3 Then
+'        MsgBox ("Przegrana. Przeciwnik wygrał")
+'        wygrana_2
+'        GoTo ooooooooooooo
+'        End If
     Gra_walka
     End If
-    End If
+ElseIf Range("d33") Or Range("d32") = 3 Then
+        If Range("d33").Value = 3 Then
+        MsgBox ("Wygrana. Pokonałeś przeciwnika")
+        wygrana_1
+'        GoTo ooooooooooooo
+        ElseIf Range("d32").Value = 3 Then
+        MsgBox ("Przegrana. Przeciwnik wygrał")
+        wygrana_2
+'        GoTo ooooooooooooo
+        End If
 
-ooooooooooooo:
-MsgBox ("Koniec gry")
+'    Gra_walka
+End If
+End If
+
+
+'ooooooooooooo:
+'MsgBox ("Koniec gry")
 End Sub
 Sub atak_góra()
 
@@ -3818,4 +3857,524 @@ obrona_dół_2:
 End Sub
 
 
+
+
+Sub wygrana_1()
+
+
+    Range("A7:W7").Select
+    Selection.AutoFill Destination:=Range("A7:W28"), Type:=xlFillDefault
+    Range("A7:W28").Select
+    Range("A7").Select
+'
+''''''''''''''''''''''''''''''''''''''''''''''''''' Wygrana_1_postać_1
+'
+
+'
+    Range("E52").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Range("E8").Select
+    ActiveSheet.Paste
+    Range("F8").Select
+    ActiveSheet.Paste
+    Range("F11").Select
+    ActiveSheet.Paste
+    Range("E50").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Range("D10").Select
+    ActiveSheet.Paste
+    Range("D11").Select
+    ActiveSheet.Paste
+    Range("I10").Select
+    ActiveSheet.Paste
+    Range("I11").Select
+    ActiveSheet.Paste
+    Range("H12").Select
+    ActiveSheet.Paste
+    Range("D51").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Range("E9").Select
+    ActiveSheet.Paste
+    Range("E10").Select
+    ActiveSheet.Paste
+    Range("F14").Select
+    ActiveSheet.Paste
+    Range("F12").Select
+    ActiveSheet.Paste
+    Range("F13").Select
+    ActiveSheet.Paste
+    Range("F15").Select
+    ActiveSheet.Paste
+    Range("F16").Select
+    ActiveSheet.Paste
+    Range("F17").Select
+    ActiveSheet.Paste
+    Range("F18").Select
+    ActiveSheet.Paste
+    Range("D52").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Range("G9").Select
+    ActiveSheet.Paste
+    Range("G10").Select
+    ActiveSheet.Paste
+    Range("E19").Select
+    ActiveSheet.Paste
+    Range("E20").Select
+    ActiveSheet.Paste
+    Range("E21").Select
+    ActiveSheet.Paste
+    Range("E22").Select
+    ActiveSheet.Paste
+    Range("E23").Select
+    ActiveSheet.Paste
+    Range("E24").Select
+    ActiveSheet.Paste
+    Range("E25").Select
+    ActiveSheet.Paste
+    Range("D50").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Range("G19").Select
+    ActiveSheet.Paste
+    Range("G20").Select
+    ActiveSheet.Paste
+    Range("G21").Select
+    ActiveSheet.Paste
+    Range("G22").Select
+    ActiveSheet.Paste
+    Range("G23").Select
+    ActiveSheet.Paste
+    Range("G24").Select
+    ActiveSheet.Paste
+    Range("G25").Select
+    ActiveSheet.Paste
+    Range("E51").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Range("G11").Select
+    ActiveSheet.Paste
+    Range("E52").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Range("F51").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Range("G8").Select
+    ActiveSheet.Paste
+    Range("F52").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Range("E11").Select
+    ActiveSheet.Paste
+    Range("E51").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Range("E13").Select
+    ActiveSheet.Paste
+    Range("D12").Select
+    ActiveSheet.Paste
+    Range("G13").Select
+    ActiveSheet.Paste
+    Range("D8").Select
+    Application.CutCopyMode = False
+    ActiveCell.FormulaR1C1 = "\-\-\-\-\"
+    Range("D8").Select
+    Selection.Copy
+    Range("D9").Select
+    ActiveSheet.Paste
+    Range("I8").Select
+    ActiveSheet.Paste
+    Range("I9").Select
+    ActiveSheet.Paste
+    Range("G26").Select
+    ActiveSheet.Paste
+    Range("G27").Select
+    ActiveSheet.Paste
+    Range("H26").Select
+    ActiveSheet.Paste
+    Range("H27").Select
+    ActiveSheet.Paste
+    Range("E26").Select
+    ActiveSheet.Paste
+    Range("E27").Select
+    ActiveSheet.Paste
+    Range("D26").Select
+    ActiveSheet.Paste
+    Range("D27").Select
+    ActiveSheet.Paste
+    Range("B7").Select
+    Application.CutCopyMode = False
+
+'
+''''''''''''''''''''''''''''''''''''''''''''''''''' Wygrana_1_postać_2
+
+'
+    Range("E8:G11").Select
+    Selection.Copy
+    Range("U20").Select
+    ActiveSheet.Paste
+    Range("G26:H27").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Range("N26").Select
+    ActiveSheet.Paste
+    Range("N23").Select
+    ActiveSheet.Paste
+    Range("D10").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Range("P24").Select
+    ActiveSheet.Paste
+    Range("Q24").Select
+    ActiveSheet.Paste
+    Range("P27").Select
+    ActiveSheet.Paste
+    Range("Q27").Select
+    ActiveSheet.Paste
+    Range("R25").Select
+    ActiveSheet.Paste
+    Range("R26").Select
+    ActiveSheet.Paste
+    Range("S25").Select
+    ActiveSheet.Paste
+    Range("T25").Select
+    ActiveSheet.Paste
+    Range("U25").Select
+    ActiveSheet.Paste
+    Range("V24").Select
+    ActiveSheet.Paste
+    Range("T24").Select
+    ActiveSheet.Paste
+    Range("S23").Select
+    ActiveSheet.Paste
+    Range("R22").Select
+    ActiveSheet.Paste
+    Range("T26").Select
+    ActiveSheet.Paste
+    Range("S27").Select
+    ActiveSheet.Paste
+    Range("O23:O24").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Range("Q21").Select
+    ActiveSheet.Paste
+    Range("R27").Select
+    ActiveSheet.Paste
+    Range("P20").Select
+    Application.CutCopyMode = False
+    
+    
+    
+    
+''''''''''''''''''''''''''''''''''''''''''''''''''' Format
+    Range("B7:K28,N7:W28").Select
+    With Selection.Interior
+        .PatternColorIndex = xlAutomatic
+        .ThemeColor = xlThemeColorDark2
+        .TintAndShade = -0.249977111117893
+        .PatternTintAndShade = 0
+    End With
+    Range("D8:D9,I8:I9,Q21:Q22,R27:R28").Select
+    Range("R27").Activate
+    With Selection.Interior
+        .Pattern = xlSolid
+        .PatternColorIndex = xlAutomatic
+        .Color = 65535
+    End With
+    Selection.Font.Bold = True
+    Range("D26:E27,G26:H27,N23:O24,N26:O27").Select
+    Range("N26").Activate
+    With Selection.Interior
+        .Pattern = xlSolid
+        .PatternColorIndex = xlAutomatic
+        .Color = 5287936
+    End With
+    Selection.Font.Bold = True
+    Range("F10,V22").Select
+    Selection.Borders(xlDiagonalDown).LineStyle = xlNone
+    Selection.Borders(xlDiagonalUp).LineStyle = xlNone
+    With Selection.Borders(xlEdgeLeft)
+        .LineStyle = xlContinuous
+        .Weight = xlMedium
+    End With
+    With Selection.Borders(xlEdgeTop)
+        .LineStyle = xlContinuous
+        .Weight = xlMedium
+    End With
+    With Selection.Borders(xlEdgeBottom)
+        .LineStyle = xlContinuous
+        .Weight = xlMedium
+    End With
+    With Selection.Borders(xlEdgeRight)
+        .LineStyle = xlContinuous
+        .Weight = xlMedium
+    End With
+    Selection.Borders(xlInsideVertical).LineStyle = xlNone
+    Selection.Borders(xlInsideHorizontal).LineStyle = xlNone
+    Range("N7").Select
+End Sub
+Sub wygrana_2()
+
+   
+    Range("A7:W7").Select
+    Selection.AutoFill Destination:=Range("A7:W28"), Type:=xlFillDefault
+    Range("A7:W28").Select
+    Range("A7").Select
+''''''''''''''''''''''''''''''''''''''''''''''''''' Wygrana_2_postać_1
+'
+
+'
+    Range("E52").Select
+    Selection.Copy
+    Range("Q8").Select
+    ActiveSheet.Paste
+    Range("R8").Select
+    ActiveSheet.Paste
+    Range("R11").Select
+    ActiveSheet.Paste
+    Range("E50").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Range("P10").Select
+    ActiveSheet.Paste
+    Range("P11").Select
+    ActiveSheet.Paste
+    Range("U10").Select
+    ActiveSheet.Paste
+    Range("U11").Select
+    ActiveSheet.Paste
+    Range("T12").Select
+    ActiveSheet.Paste
+    Range("D51").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Range("Q9").Select
+    ActiveSheet.Paste
+    Range("Q10").Select
+    ActiveSheet.Paste
+    Range("R14").Select
+    ActiveSheet.Paste
+    Range("R12").Select
+    ActiveSheet.Paste
+    Range("R13").Select
+    ActiveSheet.Paste
+    Range("R15").Select
+    ActiveSheet.Paste
+    Range("R16").Select
+    ActiveSheet.Paste
+    Range("R17").Select
+    ActiveSheet.Paste
+    Range("R18").Select
+    ActiveSheet.Paste
+    Range("D52").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Range("Q19").Select
+    ActiveSheet.Paste
+    Range("Q20").Select
+    ActiveSheet.Paste
+    Range("Q21").Select
+    ActiveSheet.Paste
+    Range("Q22").Select
+    ActiveSheet.Paste
+    Range("Q23").Select
+    ActiveSheet.Paste
+    Range("Q24").Select
+    ActiveSheet.Paste
+    Range("Q25").Select
+    ActiveSheet.Paste
+    Range("D50").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Range("S19").Select
+    ActiveSheet.Paste
+    Range("S21").Select
+    ActiveSheet.Paste
+    Range("S20").Select
+    ActiveSheet.Paste
+    Range("S22").Select
+    ActiveSheet.Paste
+    Range("S23").Select
+    ActiveSheet.Paste
+    Range("S24").Select
+    ActiveSheet.Paste
+    Range("S25").Select
+    ActiveSheet.Paste
+    Range("E51").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Range("P12").Select
+    ActiveSheet.Paste
+    Range("Q13").Select
+    ActiveSheet.Paste
+    Range("S13").Select
+    ActiveSheet.Paste
+    Range("S11").Select
+    ActiveSheet.Paste
+    Range("D52").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Range("S9").Select
+    ActiveSheet.Paste
+    Range("S10").Select
+    ActiveSheet.Paste
+    Range("F51").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Range("S8").Select
+    ActiveSheet.Paste
+    Range("F52").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Range("Q11").Select
+    ActiveSheet.Paste
+    Range("P8").Select
+    Application.CutCopyMode = False
+    ActiveCell.FormulaR1C1 = "\-\-\-\-\"
+    Range("P8").Select
+    Selection.Copy
+    Range("P9").Select
+    ActiveSheet.Paste
+    Range("U8").Select
+    ActiveSheet.Paste
+    Range("U9").Select
+    ActiveSheet.Paste
+    Range("S26").Select
+    ActiveSheet.Paste
+    Range("S27").Select
+    ActiveSheet.Paste
+    Range("T26").Select
+    ActiveSheet.Paste
+    Range("T27").Select
+    ActiveSheet.Paste
+    Range("Q26").Select
+    ActiveSheet.Paste
+    Range("Q27").Select
+    ActiveSheet.Paste
+    Range("P26").Select
+    ActiveSheet.Paste
+    Range("P27").Select
+    ActiveSheet.Paste
+    Range("N9").Select
+    Application.CutCopyMode = False
+
+''''''''''''''''''''''''''''''''''''''''''''''''''' Wygrana_2_postać_2
+'
+
+'
+    Range("Q8:S11").Select
+    Selection.Copy
+    Range("B20").Select
+    ActiveSheet.Paste
+    Range("P26:P27").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Range("K26").Select
+    ActiveSheet.Paste
+    Range("J26").Select
+    ActiveSheet.Paste
+    Range("K23").Select
+    ActiveSheet.Paste
+    Range("J23").Select
+    ActiveSheet.Paste
+    Range("Q8").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Range("C24").Select
+    ActiveSheet.Paste
+    Range("D25").Select
+    ActiveSheet.Paste
+    Range("E25").Select
+    ActiveSheet.Paste
+    Range("F25").Select
+    ActiveSheet.Paste
+    Range("E24").Select
+    ActiveSheet.Paste
+    Range("F23").Select
+    ActiveSheet.Paste
+    Range("E26").Select
+    ActiveSheet.Paste
+    Range("I24").Select
+    ActiveSheet.Paste
+    Range("H24").Select
+    ActiveSheet.Paste
+    Range("H26").Select
+    ActiveSheet.Paste
+    Range("I26").Select
+    Range("I27").Select
+    ActiveSheet.Paste
+    Range("H27").Select
+    ActiveSheet.Paste
+    Range("G26").Select
+    ActiveSheet.Paste
+    Range("G25").Select
+    ActiveSheet.Paste
+    Range("F27").Select
+    ActiveSheet.Paste
+    Range("J23:J24").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Range("G22").Select
+    ActiveSheet.Paste
+    Range("G27").Select
+    ActiveSheet.Paste
+    Range("G15").Select
+    Application.CutCopyMode = False
+
+''''''''''''''''''''''''''''''''''''''''''''''''''' Format
+'
+
+'
+    Range("B7:K28,N7:W28").Select
+    Range("N7").Activate
+    With Selection.Interior
+        .PatternColorIndex = xlAutomatic
+        .ThemeColor = xlThemeColorDark2
+        .TintAndShade = -0.249977111117893
+        .PatternTintAndShade = 0
+    End With
+    Range("G22:G23,G27:G28,P8:P9,U8:U9").Select
+    Range("U8").Activate
+    With Selection.Interior
+        .Pattern = xlSolid
+        .PatternColorIndex = xlAutomatic
+        .Color = 65535
+    End With
+    Selection.Font.Bold = True
+    Range("J23:K24,J26:K27,P26:Q27,S26:T27").Select
+    Range("S26").Activate
+    With Selection.Interior
+        .Pattern = xlSolid
+        .PatternColorIndex = xlAutomatic
+        .Color = 5287936
+    End With
+    Selection.Font.Bold = True
+    Range("C22,R10").Select
+    Range("R10").Activate
+    Selection.Borders(xlDiagonalDown).LineStyle = xlNone
+    Selection.Borders(xlDiagonalUp).LineStyle = xlNone
+    With Selection.Borders(xlEdgeLeft)
+        .LineStyle = xlContinuous
+        .Weight = xlMedium
+    End With
+    With Selection.Borders(xlEdgeTop)
+        .LineStyle = xlContinuous
+        .Weight = xlMedium
+    End With
+    With Selection.Borders(xlEdgeBottom)
+        .LineStyle = xlContinuous
+        .Weight = xlMedium
+    End With
+    With Selection.Borders(xlEdgeRight)
+        .LineStyle = xlContinuous
+        .Weight = xlMedium
+    End With
+    Selection.Borders(xlInsideVertical).LineStyle = xlNone
+    Selection.Borders(xlInsideHorizontal).LineStyle = xlNone
+    Range("G13").Select
+End Sub
 
